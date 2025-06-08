@@ -23,8 +23,8 @@ function kareninAlani(kenaruzunlugu) {
 	4. Hesaplanan çemberin çevresi döndürülecektir.
 */
 
-function cemberinCevresi(/* kodlar buraya */) {
-  /* kodlar buraya */
+function cemberinCevresi(yaricap) {
+  return 2 * pi * yaricap;
 }
 
 /* (Oto test yok) Yukarıdaki cemberinCevresi fonksiyonunu yarıçap = 5 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -37,8 +37,8 @@ function cemberinCevresi(/* kodlar buraya */) {
 	4. Hesaplanan çemberin alanı döndürülecektir.
 */
 
-function cemberinAlani(/* kodlar buraya */) {
-  /* kodlar buraya */
+function cemberinAlani(yaricap) {
+  return pi * Math.pow(yaricap, 2);
 }
 
 /* (Oto test yok) Yukarıdaki cemberinAlani fonksiyonunu yarıçap = 15 vererek aşağıda çalıştırıp, sonucu konsolda gözlemleyin (console.log)  */
@@ -72,27 +72,63 @@ let ucetambolunenler,
 
 // 3a çözümü
 
-/* kodlar buraya */
+enbuyuk = sayilar[0];
+enkucuk = sayilar[0];
+for (let i = 0; i < sayilar.length; i++) {
+  if (sayilar[i] > enbuyuk) {
+	enbuyuk = sayilar[i];
+  }
+  if (sayilar[i] < enkucuk) {
+	enkucuk = sayilar[i];
+  }
+}
 
 // 3b çözümü:
 
-/* kodlar buraya */
+ucetambolunenler = [];
+sayilar.forEach((sayi) => {
+  if (sayi % 3 === 0) {
+	ucetambolunenler.push(sayi);
+  }
+});
 
 // 3c çözümü:
 
-/* kodlar buraya */
+ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi) => {
+  return toplam + sayi;
+}, 0);
 
 // 3d çözümü
 
-/* kodlar buraya */
+besyuzdenkucuksayilar = [];
+besyuzdenkucuksayilar = sayilar.filter((sayi) => {
+  return sayi < 500;
+});
 
 // 3e çözümü
 
-/* kodlar buraya */
+siralisayilar = besyuzdenkucuksayilar.sort((a, b) => {
+  return a - b;
+});
 
 // 3f çözümü
 
-/* kodlar buraya */
+tekraredensayilar = [];
+const tekrarEdilenSayilar = {};
+sayilar.forEach((sayi) => {
+  if (tekrarEdilenSayilar[sayi]) {
+	tekrarEdilenSayilar[sayi]++;
+  } else {
+	tekrarEdilenSayilar[sayi] = 1;
+  }
+});
+Object.keys(tekrarEdilenSayilar).forEach((sayi) => {
+  if (tekrarEdilenSayilar[sayi] > 1) {
+	tekraredensayilar.push(
+	  `${sayi} sayısı ${tekrarEdilenSayilar[sayi]} kere tekrar edilmiştir`
+	);
+  }
+});
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 module.exports = {
