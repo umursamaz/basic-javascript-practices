@@ -74,6 +74,7 @@ let ucetambolunenler,
 
 enbuyuk = sayilar[0];
 enkucuk = sayilar[0];
+
 for (let i = 0; i < sayilar.length; i++) {
   if (sayilar[i] > enbuyuk) {
 	enbuyuk = sayilar[i];
@@ -86,49 +87,39 @@ for (let i = 0; i < sayilar.length; i++) {
 // 3b çözümü:
 
 ucetambolunenler = [];
-sayilar.forEach((sayi) => {
-  if (sayi % 3 === 0) {
-	ucetambolunenler.push(sayi);
-  }
-});
+sayilar.forEach((sayi) => (sayi % 3 === 0 ? ucetambolunenler.push(sayi) : null));
+// console.log(ucetambolunenler);
 
 // 3c çözümü:
 
-ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi) => {
-  return toplam + sayi;
-}, 0);
-
+ucebolunenlerintoplami = ucetambolunenler.reduce((toplam, sayi) => toplam + sayi, 0);
+// console.log(ucebolunenlerintoplami);
 // 3d çözümü
 
 besyuzdenkucuksayilar = [];
-besyuzdenkucuksayilar = sayilar.filter((sayi) => {
-  return sayi < 500;
-});
+besyuzdenkucuksayilar = sayilar.filter((sayi) => (sayi < 500));
+// console.log(besyuzdenkucuksayilar);
 
 // 3e çözümü
 
-siralisayilar = besyuzdenkucuksayilar.sort((a, b) => {
-  return a - b;
-});
+siralisayilar = besyuzdenkucuksayilar.sort((a, b) => (a - b));
+// console.log(siralisayilar);
 
 // 3f çözümü
 
 tekraredensayilar = [];
 const tekrarEdilenSayilar = {};
-sayilar.forEach((sayi) => {
-  if (tekrarEdilenSayilar[sayi]) {
-	tekrarEdilenSayilar[sayi]++;
-  } else {
-	tekrarEdilenSayilar[sayi] = 1;
-  }
-});
-Object.keys(tekrarEdilenSayilar).forEach((sayi) => {
-  if (tekrarEdilenSayilar[sayi] > 1) {
-	tekraredensayilar.push(
-	  `${sayi} sayısı ${tekrarEdilenSayilar[sayi]} kere tekrar edilmiştir`
-	);
-  }
-});
+
+for (let i = 0; i < sayilar.length; i++) 
+  tekrarEdilenSayilar[sayilar[i]] = tekrarEdilenSayilar[sayilar[i]] ? tekrarEdilenSayilar[sayilar[i]] + 1 : 1;
+
+
+for (let sayi in tekrarEdilenSayilar) {
+  (tekrarEdilenSayilar[sayi] > 1) 
+  	? tekraredensayilar.push(`${sayi} sayısı ${tekrarEdilenSayilar[sayi]} kere tekrar edilmiştir`)
+	: null;
+}
+// console.log(tekraredensayilar);
 
 /*  Bu satırın aşağısındaki kodları lütfen değiştirmeyin  */
 module.exports = {
